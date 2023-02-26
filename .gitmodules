@@ -1,0 +1,3 @@
+[submodule "upstream/distribution"]
+	path = upstream/distribution
+	url = git@github.com:Asymmetric-Effort/distribution.git
