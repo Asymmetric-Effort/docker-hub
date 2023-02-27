@@ -14,7 +14,7 @@ docker_hub/run: docker_hub/initialize
 			   --rm \
 			   --name $(DOCKER_HUB_DOCKER_CONTAINER_NAME) \
 			   --publish $(DOCKER_HUB_IP_ADDRESS):$(DOCKER_HUB_PORT):5000 \
-			   --e REGISTRY_HTTP_SECRET=$(DOCKER_HUB_REGISTRY_HTTP_SECRET) \
+			   -e REGISTRY_HTTP_SECRET=$(DOCKER_HUB_REGISTRY_HTTP_SECRET) \
 			   --volume $(DOCKER_HUB_VOLUME):/var/lib/registry/ $(REMOTE_IMAGE) .
 	@docker ps
 	@echo "$@ completed."
@@ -30,7 +30,7 @@ docker_hub/run/local: docker_hub/initialize
 			   --rm \
 			   --name $(DOCKER_HUB_DOCKER_CONTAINER_NAME) \
 			   --publish $(DOCKER_HUB_IP_ADDRESS):$(DOCKER_HUB_PORT):5000 \
-			   --e REGISTRY_HTTP_SECRET=$(DOCKER_HUB_REGISTRY_HTTP_SECRET) \
+			   -e REGISTRY_HTTP_SECRET=$(DOCKER_HUB_REGISTRY_HTTP_SECRET) \
 			   --volume $(DOCKER_HUB_VOLUME):/var/lib/registry/ $(LOCAL_IMAGE) .
 	@docker ps
 	@echo "$@ completed."
