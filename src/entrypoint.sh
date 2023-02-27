@@ -1,0 +1,18 @@
+#!/bin/bash -e
+# (c) 2023 Sam Caldwell <mail@samcaldwell.net>
+#
+# Docker registry entrypoint
+#
+
+if [[ "${ENVIRONMENT}" == "development" ]]; then
+  ln -sf /etc/docker/registry/config-dev.yml /etc/docker/registry/config.yml
+else
+  ln -sf /etc/docker/registry/config-prod.yml /etc/docker/registry/config.yml
+fi
+
+if [[ "${REGISTRY_HTTP_SECRET}_" == "_" ]]; then
+  echo "you must set REGISTRY_HTTP_SECRET before running"
+  exit 1
+else
+  registry serve /etc/docker/registry/config.yml
+fi

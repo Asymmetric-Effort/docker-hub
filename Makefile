@@ -1,10 +1,11 @@
 DOCKER_HUB:=docker.internal.asymmetric-effort.com
-DOCKER_HUB_DOCKER_IMAGE_NAME:=asymmetric-effort/git-server:local
+DOCKER_HUB_DOCKER_IMAGE_NAME:=asymmetric-effort/docker-hub:local
 DOCKER_HUB_DOCKER_CONTAINER_NAME:=git-server
 DOCKER_HUB_IP_ADDRESS:=10.37.129.2
 DOCKER_HUB_SSH_PORT:=22
 DOCKER_HUB_HTTP_PORT:=8888
 DOCKER_HUB_VOLUME:=$(HOME)/docker_hub
+DOCKER_HUB_VERSION:=0.0.0
 
 docker_hub/help:
 	@echo '$@'
