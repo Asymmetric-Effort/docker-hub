@@ -50,9 +50,10 @@ RUN go build -v -trimpath \
 FROM base AS registry
 
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends cron \
+    apt-get install -y --no-install-recommends cron
 
 RUN echo '0 0 * * * /usr/bin/registry garbage-collect /etc/docker/registry/config.yml -m' > /etc/cron.daily/registry-garbage-collect
+RUN mkdir -p /var/lib/registry/
 
 COPY src/entrypoint.sh /usr/bin/
 COPY src/config.yml /etc/docker/registry/config-prod.yml
@@ -64,6 +65,5 @@ COPY --from=artifacts /usr/bin/registry-api-descriptor-template /usr/bin/
 VOLUME [ "/var/lib/registry" ]
 VOLUME [ "/docker/registry/v2/repositories" ]
 
-EXPOSE [ "8125" ]
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
 CMD [ "/usr/bin/entrypoint.sh" ]
