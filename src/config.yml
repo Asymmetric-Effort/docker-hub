@@ -4,9 +4,13 @@ log:
     service: registry
 storage:
   cache:
-    blobdescriptor: inmemory
+    blobdescriptor: redis
   filesystem:
     rootdirectory: /var/lib/registry
+    umask: 0660
+    maxthreads: 100
+  # implement s3 once ceph is implemented...
+  # see https://docs.docker.com/registry/storage-drivers/s3/
 http:
   addr: :5000
   headers:

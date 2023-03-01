@@ -7,6 +7,12 @@ DOCKER_HUB_VOLUME:=$(HOME)/docker_hub
 DOCKER_HUB_VERSION:=0.0.0
 DOCKER_HUB_REGISTRY_HTTP_SECRET:=cpe-1704-tks
 
+DOCKER_REDIS_IMAGE:=redis:latest
+DOCKER_REDIS_CONTAINER_NAME:=docker-cache-redis
+DOCKER_REDIS_IP_ADDRESS:=10.37.129.2
+DOCKER_REDIS_PORT:=6379
+
+
 docker_hub/help:
 	@echo '$@'
 	@echo 'make docker_hub/build     -> build the container locally'
